@@ -2,20 +2,20 @@
 class Cocktail{
   String? idDrink;
   String? strDrink;
-  Null? strDrinkAlternate;
+  String? strDrinkAlternate;
   String? strTags;
-  Null? strVideo;
+  String? strVideo;
   String? strCategory;
   String? strIBA;
   String? strAlcoholic;
   String? strGlass;
   String? strInstructions;
-  Null? strInstructionsES;
+  String? strInstructionsES;
   String? strInstructionsDE;
-  Null? strInstructionsFR;
+  String? strInstructionsFR;
   String? strInstructionsIT;
-  Null? strInstructionsZHHANS;
-  Null? strInstructionsZHHANT;
+  String? strInstructionsZHHANS;
+  String? strInstructionsZHHANT;
   String? strDrinkThumb;
   String? strIngredient1;
   String? strIngredient2;
@@ -24,14 +24,14 @@ class Cocktail{
   String? strIngredient5;
   String? strIngredient6;
   String? strIngredient7;
-  Null? strIngredient8;
-  Null? strIngredient9;
-  Null? strIngredient10;
-  Null? strIngredient11;
-  Null? strIngredient12;
-  Null? strIngredient13;
-  Null? strIngredient14;
-  Null? strIngredient15;
+  String? strIngredient8;
+  String? strIngredient9;
+  String? strIngredient10;
+  String? strIngredient11;
+  String? strIngredient12;
+  String? strIngredient13;
+  String? strIngredient14;
+  String? strIngredient15;
   String? strMeasure1;
   String? strMeasure2;
   String? strMeasure3;
@@ -39,21 +39,21 @@ class Cocktail{
   String? strMeasure5;
   String? strMeasure6;
   String? strMeasure7;
-  Null? strMeasure8;
-  Null? strMeasure9;
-  Null? strMeasure10;
-  Null? strMeasure11;
-  Null? strMeasure12;
-  Null? strMeasure13;
-  Null? strMeasure14;
-  Null? strMeasure15;
+  String? strMeasure8;
+  String? strMeasure9;
+  String? strMeasure10;
+  String? strMeasure11;
+  String? strMeasure12;
+  String? strMeasure13;
+  String? strMeasure14;
+  String? strMeasure15;
   String? strImageSource;
   String? strImageAttribution;
   String? strCreativeCommonsConfirmed;
 
 
   Cocktail(
-      {this.idDrink,
+      { this.idDrink,
         this.strDrink,
         this.strDrinkAlternate,
         this.strTags,

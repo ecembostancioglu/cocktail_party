@@ -1,23 +1,30 @@
 import 'package:cocktail_party/models/cocktail.dart';
 import 'package:dio/dio.dart';
 
-class DioClient {
+class DioClient{
+  Future<Iterable<Cocktail>> getCocktail(String CocktailName) async{
+    Iterable<Cocktail> cocktails=[];
+    Dio dio=Dio();
+    try{
+      Response response=await dio.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=$CocktailName');
+      List parsedList=response.data['drinks'];
+      cocktails=parsedList.map<Cocktail>((element) {
+        return Cocktail.fromJson(element);
+      }).toList();
+      for(var CocktailName in cocktails){
+        print(CocktailName.strDrink);}
 
-  final Dio dio = Dio();
-   static const baseURL='https://www.thecocktaildb.com/';
-  List<Cocktail> _cocktail=[];
 
-    Future<void> getCocktail() async {
-      final response = await dio.get(
-          '${baseURL}api/json/v1/1/search.php?s=margarita');
-      print(response.data);
-      _cocktail=response.data['drinks'].map<Cocktail>((json)=>
-          Cocktail.fromJson(json)).toList();
-      for(var js in _cocktail){
-        print(js.strDrink);
+    }on DioError catch(e){
+      if (e.response != null) {
+        print('STATUS: ${e.response?.statusCode}');
+        print('DATA: ${e.response?.data}');
+        print('HEADERS: ${e.response?.headers}');
+      } else {
+        print('Error sending request!');
+        print(e.message);
       }
-
     }
-
-
+    return cocktails;
+  }
 }

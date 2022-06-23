@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
   Timer? _debounce;
 
 
+
   @override
   void initState() {
 
@@ -80,7 +81,7 @@ class _HomePageState extends State<HomePage> {
      _cocktailClient.getCocktail(word);
 
    });
-
+   _cocktails=_cocktailClient.getCocktail(word);
   }
 
 
@@ -98,7 +99,7 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           child: SingleChildScrollView(

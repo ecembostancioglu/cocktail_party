@@ -5,16 +5,16 @@ class FilterByCategory{
 }
 
 List<FilterByCategory> categories=[
-  FilterByCategory(image: 'assets/mojito.png'),
-  FilterByCategory(image: 'assets/old_fashioned.png'),
-  FilterByCategory(image: 'assets/negroni.png'),
-  FilterByCategory(image: 'assets/whiskey.png'),
-  FilterByCategory(image: 'assets/dry_martini.png'),
-  FilterByCategory(image: 'assets/margarita.png'),
-  FilterByCategory(image: 'assets/manhattan.png'),
-  FilterByCategory(image: 'assets/aperol_spritz.png'),
-  FilterByCategory(image: 'assets/moscow_mule.png'),
-  FilterByCategory(image: 'assets/pina_colada.png'),
-  FilterByCategory(image: 'assets/sazerac.png'),
+  FilterByCategory(image: 'assets/images/mojito.png'),
+  FilterByCategory(image: 'assets/images/old_fashioned.png'),
+  FilterByCategory(image: 'assets/images/negroni.png'),
+  FilterByCategory(image: 'assets/images/moscow_mule.png'),
+  FilterByCategory(image: 'assets/images/dry_martini.png'),
+  FilterByCategory(image: 'assets/images/margarita.png'),
+  FilterByCategory(image: 'assets/images/manhattan.png'),
+  FilterByCategory(image: 'assets/images/aperol_spritz.png'),
+  FilterByCategory(image: 'assets/images/whiskey.png'),
+  FilterByCategory(image: 'assets/images/pina_colada.png'),
+  FilterByCategory(image: 'assets/images/sazerac.png'),
 
 ];

@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'package:cocktail_party/constants/color_constants.dart';
+import 'package:cocktail_party/constants/text_constants.dart';
 import 'package:cocktail_party/models/cocktail.dart';
 import 'package:cocktail_party/network/dio_client.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -13,9 +16,9 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   final DioClient _cocktailClient=DioClient();
   late Future<Iterable<Cocktail>> _cocktails;
-   String? cocktailName;
+  String? cocktailName;
   Icon customIcon = const Icon(Icons.search);
-  Widget customSearchBar = const Text('Please enter the cocktail name');
+  Widget customSearchBar = const Text(TextConstants.searchBarText);
   final _controller = TextEditingController();
   final ScrollController _scrollController=ScrollController();
   String? filter;
@@ -44,7 +47,7 @@ class _SearchPageState extends State<SearchPage> {
         customSearchBar = ListTile(
           leading: const Icon(
             Icons.search,
-            color: Colors.white,
+            color: Colors.black,
             size: 28,
           ),
           title: TextField(
@@ -53,21 +56,21 @@ class _SearchPageState extends State<SearchPage> {
               onChangedTextField(val);
             },
             decoration: const InputDecoration(
-              hintText: 'Cocktail name...',
+              hintText: TextConstants.searchBarHintText,
               hintStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.black,
                 fontSize: 18,
                 fontStyle: FontStyle.italic,
               ),
               border: InputBorder.none,
             ),
             style: const TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
           ),
         );
       }else{
-        customIcon = const Icon(Icons.search);
+        customIcon = const Icon(Icons.search,color: Colors.black);
       }
     });
   }
@@ -111,7 +114,7 @@ class _SearchPageState extends State<SearchPage> {
                 builder: (context,snapshot){
                 if(snapshot.data!=null){
                   return GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2
                     ),
                     controller: _scrollController,
@@ -121,18 +124,27 @@ class _SearchPageState extends State<SearchPage> {
                         var data=snapshot.data!.toList();
                        filter == null || filter== '';
 
-                        return  GridTile(
-                            child: Container(
-                             width: 200, height: 200,
-                             child: Image.network(data[index].strDrinkThumb.toString()),));
-
-
+                        return GridTile(
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
+                              child: SizedBox(
+                               width: 100.w, height: 100.h,
+                               child: ClipRRect(
+                                 borderRadius:  BorderRadius.circular(20.0),
+                                   child: Image.network(data[index].strDrinkThumb.toString()))
+                              ),
+                            )
+                        );
                       });
                 }else if(snapshot.connectionState==ConnectionState.waiting){
-                  return CircularProgressIndicator();
-                }else
-                return Center(
-                    child: CircularProgressIndicator());
+                  return const Center(
+                      child: CircularProgressIndicator(
+                          color: ColorConstants.themeColor));
+                }else {
+                  return const Center(
+                    child: CircularProgressIndicator(
+                        color: ColorConstants.themeColor));
+                }
                 }
                 ),
           ),

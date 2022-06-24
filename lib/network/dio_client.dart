@@ -2,11 +2,15 @@ import 'package:cocktail_party/models/cocktail.dart';
 import 'package:dio/dio.dart';
 
 class DioClient{
+  Dio dio=Dio();
+  final String baseUrl='https://www.thecocktaildb.com/';
+
+
   Future<Iterable<Cocktail>> getCocktail(String CocktailName) async{
     Iterable<Cocktail> cocktails=[];
-    Dio dio=Dio();
+
     try{
-      Response response=await dio.get('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=$CocktailName');
+      Response response=await dio.get('${baseUrl}api/json/v1/1/search.php?s=$CocktailName');
       List parsedList=response.data['drinks'];
       cocktails=parsedList.map<Cocktail>((element) {
         return Cocktail.fromJson(element);
@@ -27,4 +31,6 @@ class DioClient{
     }
     return cocktails;
   }
+
+ // Future<Iterable<Cocktail>> get
 }

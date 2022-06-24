@@ -1,5 +1,6 @@
 import 'package:cocktail_party/constants/color_constants.dart';
-import 'package:cocktail_party/screens/home_page.dart';
+import 'package:cocktail_party/screens/main_screen.dart';
+import 'package:cocktail_party/screens/search_page.dart';
 import 'package:flutter/material.dart';
 
 class MyApp extends StatelessWidget {
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor:ColorConstants.themeColor,
       ),
-      home: HomePage(),
+      home: MainScreen(),
     );
   }
 }

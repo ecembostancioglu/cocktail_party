@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          body:const TabBarView(
+          body: TabBarView(
             children: [
               CocktailsPage(),
               AlcoholicPage(),

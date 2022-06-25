@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:cocktail_party/constants/color_constants.dart';
 import 'package:cocktail_party/constants/text_constants.dart';
 import 'package:cocktail_party/models/cocktail.dart';
-import 'package:cocktail_party/network/dio_client.dart';
+import 'package:cocktail_party/network/dio_cocktails.dart';
 import 'package:cocktail_party/widgets/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +15,7 @@ class CocktailsPage extends StatefulWidget {
 }
 
 class _CocktailsPageState extends State<CocktailsPage> {
-  final DioClient _cocktailClient=DioClient();
+  final DioCocktails _cocktailClient=DioCocktails();
   late Future<Iterable<Cocktail>> _cocktails;
   String? cocktailName;
   Icon customIcon = const Icon(Icons.search);
@@ -118,7 +118,6 @@ class _CocktailsPageState extends State<CocktailsPage> {
                           itemBuilder: (context,index){
                             var data=snapshot.data!.toList();
                            filter == null || filter== '';
-
                             return GridTile(
                                 child: Padding(
                                   padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),

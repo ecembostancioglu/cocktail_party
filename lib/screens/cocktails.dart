@@ -3,7 +3,7 @@ import 'package:cocktail_party/constants/color_constants.dart';
 import 'package:cocktail_party/constants/text_constants.dart';
 import 'package:cocktail_party/models/cocktail.dart';
 import 'package:cocktail_party/network/dio_cocktails.dart';
-import 'package:cocktail_party/widgets/search_bar.dart';
+import 'package:cocktail_party/widgets/cocktails/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -138,8 +138,8 @@ class _CocktailsPageState extends State<CocktailsPage> {
                       return const Center(
                         child: CircularProgressIndicator(
                             color: ColorConstants.themeColor));
-                    }
-                    }
+                      }
+                     }
                     ),
               ),
             ),

@@ -1,7 +1,8 @@
+import 'package:cocktail_party/constants/text_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../constants/color_constants.dart';
+import '../../constants/color_constants.dart';
 
 class SearchBarWidget extends StatelessWidget {
     SearchBarWidget({
@@ -23,7 +24,7 @@ class SearchBarWidget extends StatelessWidget {
           controller: myController,
           onChanged: myFunction,
           decoration: InputDecoration(
-            hintText: "Search Cocktail..",
+            hintText: TextConstants.searchBarHintText,
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(24),
                 borderSide: BorderSide(

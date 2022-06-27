@@ -7,4 +7,5 @@ class TextConstants{
   static const nonAlcoholic='Non-Alcoholic';
   static const ordinaryDrinks='Ordinary Drinks';
   static const theBestCocktails='The Best Cocktails';
+  static const seeAll='See all';
 }

@@ -6,6 +6,7 @@ import 'package:cocktail_party/network/dio_cocktails.dart';
 import 'package:cocktail_party/widgets/cocktails/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CocktailsPage extends StatefulWidget {
   const CocktailsPage({Key? key}) : super(key: key);
@@ -24,7 +25,7 @@ class _CocktailsPageState extends State<CocktailsPage> {
   final ScrollController _scrollController=ScrollController();
   String? filter;
   Timer? _debounce;
-
+  bool isLoading = true;
 
 
   @override
@@ -36,43 +37,45 @@ class _CocktailsPageState extends State<CocktailsPage> {
         filter=_controller.text;
       });
     });
+
+
     super.initState();
   }
 
   void searchBar() {
-   setState(() {
-     if (customIcon != Icons.search) {
-       customIcon = const Icon(Icons.cancel);
-       customSearchBar = ListTile(
-         leading: const Icon(
-           Icons.search,
-           color: Colors.black,
-           size: 28,
-         ),
-         title: TextField(
-           controller: _controller,
-           onChanged: (val) {
-             onChangedTextField(val);
-           },
-           decoration: const InputDecoration(
-             hintText: TextConstants.searchBarHintText,
-             hintStyle: TextStyle(
-               color: Colors.black,
-               fontSize: 18,
-               fontStyle: FontStyle.italic,
-             ),
-             border: InputBorder.none,
-           ),
-           style: const TextStyle(
-             color: Colors.black,
-           ),
-         ),
-       );
-     }
-     else {
-       customIcon = const Icon(Icons.search, color: Colors.black);
-     }
-   });
+    setState(() {
+      if (customIcon != Icons.search) {
+        customIcon = const Icon(Icons.cancel);
+        customSearchBar = ListTile(
+          leading: const Icon(
+            Icons.search,
+            color: Colors.black,
+            size: 28,
+          ),
+          title: TextField(
+            controller: _controller,
+            onChanged: (val) {
+              onChangedTextField(val);
+            },
+            decoration: const InputDecoration(
+              hintText: TextConstants.searchBarHintText,
+              hintStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 18,
+                fontStyle: FontStyle.italic,
+              ),
+              border: InputBorder.none,
+            ),
+            style: const TextStyle(
+              color: Colors.black,
+            ),
+          ),
+        );
+      }
+      else {
+        customIcon = const Icon(Icons.search, color: Colors.black);
+      }
+    });
   }
 
   Future <Cocktail?> onChangedTextField(String word) async {
@@ -85,6 +88,14 @@ class _CocktailsPageState extends State<CocktailsPage> {
 
   @override
   Widget build(BuildContext context) {
+
+
+    Future.delayed(Duration(seconds: 3)).then((value){
+      setState(() {
+        isLoading = false;
+      });
+    });
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Column(
@@ -93,9 +104,9 @@ class _CocktailsPageState extends State<CocktailsPage> {
             children: [
               Image.asset('assets/images/cocktail.png',
                   width: 80.w,height: 80.w),
-             SearchBarWidget(
-                 myController: _controller,
-                 myFunction: onChangedTextField)
+              SearchBarWidget(
+                  myController: _controller,
+                  myFunction: onChangedTextField)
             ],
           ),
           Expanded(
@@ -107,40 +118,37 @@ class _CocktailsPageState extends State<CocktailsPage> {
                 child: FutureBuilder<Iterable<Cocktail>>(
                     future: _cocktails,
                     builder: (context,snapshot){
-                    if(snapshot.data!=null){
-                      return GridView.builder(
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2
-                        ),
-                        controller: _scrollController,
-                        shrinkWrap: true,
-                          itemCount: snapshot.data!.length,
-                          itemBuilder: (context,index){
-                            var data=snapshot.data!.toList();
-                           filter == null || filter== '';
-                            return GridTile(
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
-                                  child: SizedBox(
-                                   width: 100.w, height: 100.h,
-                                   child: ClipRRect(
-                                     borderRadius:  BorderRadius.circular(20.0),
-                                       child: Image.network(data[index].strDrinkThumb.toString()))
-                                  ),
-                                )
-                            );
-                          });
-                    }else if(snapshot.connectionState==ConnectionState.waiting){
-                      return const Center(
-                          child: CircularProgressIndicator(
-                              color: ColorConstants.themeColor));
-                    }else {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                            color: ColorConstants.themeColor));
+                      if(snapshot.data!=null){
+                        return GridView.builder(
+                            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2
+                            ),
+                            controller: _scrollController,
+                            shrinkWrap: true,
+                            itemCount: snapshot.data!.length,
+                            itemBuilder: (context,index){
+                              var data=snapshot.data!.toList();
+                              filter == null || filter== '';
+                              return isLoading ? getShimmer()
+                                  : GridTile(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
+                                    child: SizedBox(
+                                        width: 100.w, height: 100.h,
+                                        child: ClipRRect(
+                                            borderRadius:  BorderRadius.circular(20.0),
+                                            child: Image.network(data[index].strDrinkThumb.toString()))
+                                    ),
+                                  )
+                              );
+                            });
+                      }else if(snapshot.connectionState==ConnectionState.waiting){
+                        return getShimmer();
+                      }else {
+                        return getShimmer();
                       }
-                     }
-                    ),
+                    }
+                ),
               ),
             ),
           ),
@@ -148,4 +156,23 @@ class _CocktailsPageState extends State<CocktailsPage> {
       ),
     );
   }
+
+  Widget getShimmer(){
+    return GridTile(
+        child: Padding(
+          padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
+          child: SizedBox(
+              width: 100.w, height: 100.h,
+              child: ClipRRect(
+                  borderRadius:  BorderRadius.circular(20.0),
+                  child:Shimmer.fromColors(
+                    baseColor: Colors.black12,
+                    highlightColor: Colors.black26,
+                      child: Container(color: Colors.white,)))
+          ),
+        )
+    );
+  }
+
+
 }

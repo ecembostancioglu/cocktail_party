@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 class AlcoholicCard extends StatelessWidget {
@@ -10,8 +9,7 @@ class AlcoholicCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
           borderRadius: BorderRadius.circular(20.0),
-            child: Image.network(alcoholicCocktail.strDrinkThumb.toString(),));
-
+            child:Image.network(alcoholicCocktail.strDrinkThumb.toString(),));
 
   }
 }

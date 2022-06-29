@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
+
+import '../../../constants/color_constants.dart';
 
 
 class AlcoholicCard extends StatelessWidget {
@@ -12,4 +15,7 @@ class AlcoholicCard extends StatelessWidget {
             child:Image.network(alcoholicCocktail.strDrinkThumb.toString(),));
 
   }
+
+
+
 }

@@ -18,13 +18,13 @@ class _AlcoholicState extends State<Alcoholic> {
   final DioAlcoholic _dioAlcoholic=DioAlcoholic();
 
   Future<Iterable<Cocktail>>? _cocktails;
+  bool _isLoading=true;
 
   @override
   void initState() {
     _cocktails= _dioAlcoholic.getAlcoholic();
     super.initState();
   }
-
 
 
   @override

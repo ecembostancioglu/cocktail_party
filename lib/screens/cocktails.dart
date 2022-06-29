@@ -25,22 +25,23 @@ class _CocktailsPageState extends State<CocktailsPage> {
   final ScrollController _scrollController=ScrollController();
   String? filter;
   Timer? _debounce;
-  bool isLoading = true;
-
+  bool? isLoading;
 
   @override
   void initState() {
-
+    isLoading = true;
     _cocktails=_cocktailClient.getCocktail(_controller.text);
-    _controller.addListener(() {
-      setState(() {
-        filter=_controller.text;
+
+      _controller.addListener(() {
+        setState(() {
+          filter=_controller.text;
+        });
       });
-    });
 
 
     super.initState();
   }
+
 
   void searchBar() {
     setState(() {
@@ -80,7 +81,7 @@ class _CocktailsPageState extends State<CocktailsPage> {
 
   Future <Cocktail?> onChangedTextField(String word) async {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
-    _debounce = Timer(const Duration(milliseconds: 2000), () {
+    _debounce = Timer(const Duration(seconds: 2), () {
       _cocktails = _cocktailClient.getCocktail(word);
     });
 
@@ -89,11 +90,14 @@ class _CocktailsPageState extends State<CocktailsPage> {
   @override
   Widget build(BuildContext context) {
 
-
     Future.delayed(Duration(seconds: 3)).then((value){
-      setState(() {
-        isLoading = false;
-      });
+
+      if(mounted){
+        setState(() {
+          isLoading=false;
+        });
+      }
+
     });
 
     return Scaffold(
@@ -129,23 +133,22 @@ class _CocktailsPageState extends State<CocktailsPage> {
                             itemBuilder: (context,index){
                               var data=snapshot.data!.toList();
                               filter == null || filter== '';
-                              return isLoading ? getShimmer()
+                              return isLoading! ? getShimmerLoading()
                                   : GridTile(
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
-                                    child: SizedBox(
-                                        width: 100.w, height: 100.h,
-                                        child: ClipRRect(
-                                            borderRadius:  BorderRadius.circular(20.0),
-                                            child: Image.network(data[index].strDrinkThumb.toString()))
-                                    ),
+                                    child: Padding(
+                                     padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
+                                     child: ClipRRect(
+                                         borderRadius: BorderRadius.circular(20.0),
+                                         child: Image.network(data[index].strDrinkThumb.toString(),
+                                          width: 100.w, height: 100.h)),
                                   )
                               );
                             });
-                      }else if(snapshot.connectionState==ConnectionState.waiting){
-                        return getShimmer();
-                      }else {
-                        return getShimmer();
+                      }else if(snapshot.data==ConnectionState.waiting || snapshot.data==null){
+                        return getShimmerLoading();
+                      }
+                      else {
+                        return getShimmerLoading();
                       }
                     }
                 ),
@@ -157,21 +160,18 @@ class _CocktailsPageState extends State<CocktailsPage> {
     );
   }
 
-  Widget getShimmer(){
-    return GridTile(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
-          child: SizedBox(
-              width: 100.w, height: 100.h,
+  Shimmer getShimmerLoading(){
+    return Shimmer.fromColors(
+        baseColor: Colors.black12,
+        highlightColor: Colors.black26,
+        child:  GridTile(
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
               child: ClipRRect(
                   borderRadius:  BorderRadius.circular(20.0),
-                  child:Shimmer.fromColors(
-                    baseColor: Colors.black12,
-                    highlightColor: Colors.black26,
-                      child: Container(color: Colors.white,)))
-          ),
-        )
-    );
+                  child:Container(color: ColorConstants.primaryColor)),
+            )
+        ));
   }
 
 

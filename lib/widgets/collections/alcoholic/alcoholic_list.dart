@@ -8,7 +8,7 @@ class AlcoholicList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200.h,
+      height: 180.h,
       child: Padding(
         padding: EdgeInsets.all(10.h),
         child: ListView.builder(

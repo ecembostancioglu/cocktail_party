@@ -4,12 +4,13 @@ import 'package:cocktail_party/constants/text_constants.dart';
 import 'package:cocktail_party/models/cocktail.dart';
 import 'package:cocktail_party/network/dio_cocktails.dart';
 import 'package:cocktail_party/screens/cocktail_detail.dart';
+import 'package:cocktail_party/widgets/cocktails/cocktail_card.dart';
 import 'package:cocktail_party/widgets/cocktails/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../widgets/shimmer_for_cocktails.dart';
+import '../widgets/shimmer/shimmer_for_cocktails.dart';
 
 class CocktailsPage extends StatefulWidget {
   const CocktailsPage({Key? key}) : super(key: key);
@@ -138,16 +139,8 @@ class _CocktailsPageState extends State<CocktailsPage> {
                                   : GridTile(
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
-                                    child: SizedBox(
-                                        width: 100.w, height: 100.h,
-                                        child: ClipRRect(
-                                            borderRadius:  BorderRadius.circular(20.0),
-                                            child: GestureDetector(
-                                              onTap: ()=>Navigator.push(context,
-                                                  MaterialPageRoute(builder: (context)=> CocktailDetails(cocktailDetails: data[index]))),
-                                                child: Hero(
-                                                    tag: "cocktail-#${data[index].strDrinkThumb}",
-                                                    child: Image.network(data[index].strDrinkThumb.toString()))))
+                                    child: CocktailCard(
+                                      cocktail: data[index],
                                     ),
                                   )
                               );

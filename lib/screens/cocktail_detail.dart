@@ -22,11 +22,24 @@ class CocktailDetails extends StatelessWidget {
         backgroundColor: ColorConstants.transparent,
         elevation: 0,
       ) ,
-      body: Column(
+      body: Stack(
         children: [
-          Hero(
-              tag: "cocktail-#${cocktailDetails.strDrinkThumb}",
-              child: Image.network(cocktailDetails.strDrinkThumb.toString()))
+          Image.network(cocktailDetails.strDrinkThumb.toString(),
+          ),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: ColorConstants.primaryColor,
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.r),
+                    topRight: Radius.circular(20.r))
+              ),
+              width: 1.sw,
+              height: 80.h,
+            ),
+          )
         ],
       ),
 

@@ -1,8 +1,8 @@
 import 'package:cocktail_party/constants/text_constants.dart';
 import 'package:cocktail_party/models/cocktail.dart';
 import 'package:cocktail_party/network/dio_nonalcoholic.dart';
-import 'package:cocktail_party/widgets/shimmer_for_cocktails.dart';
-import 'package:cocktail_party/widgets/shimmer_for_collections.dart';
+import 'package:cocktail_party/widgets/shimmer/shimmer_for_cocktails.dart';
+import 'package:cocktail_party/widgets/shimmer/shimmer_for_collections.dart';
 import 'package:flutter/material.dart';
 
 import '../../../constants/color_constants.dart';

@@ -1,6 +1,6 @@
 import 'package:cocktail_party/constants/text_constants.dart';
 import 'package:cocktail_party/screens/collections.dart';
-import 'package:cocktail_party/screens/cocktails.dart';
+import 'package:cocktail_party/screens/cocktails/cocktails.dart';
 import 'package:cocktail_party/screens/the_best_cocktails.dart';
 import 'package:flutter/material.dart';
 

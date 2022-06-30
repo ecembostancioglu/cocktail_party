@@ -10,6 +10,17 @@ class CocktailDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+    int a=1;
+    if(a>=1 || a<7){
+      a++;
+      print('cocktailDetails.strIngredient${a}.toString()');
+    }
+
+
+
+
     return Scaffold(
       extendBodyBehindAppBar:true,
       appBar:AppBar(
@@ -77,14 +88,68 @@ class CocktailDetails extends StatelessWidget {
                   child: Text(cocktailDetails.strInstructions.toString()),
                 ),
                Row(
+                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                  children: [
                    Padding(padding: const EdgeInsets.all(20.0),
                      child: Text(cocktailDetails.strIngredient1.toString()),),
                    Padding(padding: const EdgeInsets.all(20.0),
                      child: Text(cocktailDetails.strMeasure1.toString()),),
                  ],
-               )
-
+               ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strIngredient2.toString()),),
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strMeasure2.toString()),),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strIngredient3.toString()),),
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strMeasure3.toString()),),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strIngredient4.toString()),),
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strMeasure4.toString()),),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strIngredient5.toString()),),
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strMeasure5.toString()),),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strIngredient6.toString()),),
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strMeasure6.toString()),),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strIngredient7.toString()),),
+                    Padding(padding: const EdgeInsets.all(20.0),
+                      child: Text(cocktailDetails.strMeasure7.toString()),),
+                  ],
+                )
               ],
             )
           ],

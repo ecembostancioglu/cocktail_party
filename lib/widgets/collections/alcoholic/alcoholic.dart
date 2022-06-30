@@ -1,4 +1,6 @@
 import 'package:cocktail_party/constants/text_constants.dart';
+import 'package:cocktail_party/widgets/shimmer_for_cocktails.dart';
+import 'package:cocktail_party/widgets/shimmer_for_collections.dart';
 import 'package:flutter/material.dart';
 import '../../../constants/color_constants.dart';
 import '../../../models/cocktail.dart';
@@ -39,9 +41,7 @@ class _AlcoholicState extends State<Alcoholic> {
           builder: (context,snapshot){
             if(snapshot.data!=null){
               return AlcoholicList(snapshot: snapshot);
-            } return const Center(
-                child: CircularProgressIndicator(
-                    color: ColorConstants.themeColor));
+            } return getShimmerLoadingforCollections();
           },
         ),
       ],

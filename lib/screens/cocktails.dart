@@ -3,10 +3,13 @@ import 'package:cocktail_party/constants/color_constants.dart';
 import 'package:cocktail_party/constants/text_constants.dart';
 import 'package:cocktail_party/models/cocktail.dart';
 import 'package:cocktail_party/network/dio_cocktails.dart';
+import 'package:cocktail_party/screens/cocktail_detail.dart';
 import 'package:cocktail_party/widgets/cocktails/search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../widgets/shimmer_for_cocktails.dart';
 
 class CocktailsPage extends StatefulWidget {
   const CocktailsPage({Key? key}) : super(key: key);
@@ -91,9 +94,11 @@ class _CocktailsPageState extends State<CocktailsPage> {
 
 
     Future.delayed(Duration(seconds: 3)).then((value){
-      setState(() {
-        isLoading = false;
-      });
+      if(mounted){
+        setState(() {
+          isLoading=false;
+        });
+      }
     });
 
     return Scaffold(
@@ -129,7 +134,7 @@ class _CocktailsPageState extends State<CocktailsPage> {
                             itemBuilder: (context,index){
                               var data=snapshot.data!.toList();
                               filter == null || filter== '';
-                              return isLoading ? getShimmer()
+                              return isLoading ? getShimmerLoadingforCocktails()
                                   : GridTile(
                                   child: Padding(
                                     padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
@@ -137,15 +142,18 @@ class _CocktailsPageState extends State<CocktailsPage> {
                                         width: 100.w, height: 100.h,
                                         child: ClipRRect(
                                             borderRadius:  BorderRadius.circular(20.0),
-                                            child: Image.network(data[index].strDrinkThumb.toString()))
+                                            child: GestureDetector(
+                                              onTap: ()=>Navigator.push(context,
+                                                  MaterialPageRoute(builder: (context)=> CocktailDetails(cocktailDetails: data[index]))),
+                                                child: Image.network(data[index].strDrinkThumb.toString())))
                                     ),
                                   )
                               );
                             });
                       }else if(snapshot.connectionState==ConnectionState.waiting){
-                        return getShimmer();
+                        return getShimmerLoadingforCocktails();
                       }else {
-                        return getShimmer();
+                        return getShimmerLoadingforCocktails();
                       }
                     }
                 ),
@@ -156,23 +164,5 @@ class _CocktailsPageState extends State<CocktailsPage> {
       ),
     );
   }
-
-  Widget getShimmer(){
-    return GridTile(
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
-          child: SizedBox(
-              width: 100.w, height: 100.h,
-              child: ClipRRect(
-                  borderRadius:  BorderRadius.circular(20.0),
-                  child:Shimmer.fromColors(
-                    baseColor: Colors.black12,
-                    highlightColor: Colors.black26,
-                      child: Container(color: Colors.white,)))
-          ),
-        )
-    );
-  }
-
 
 }

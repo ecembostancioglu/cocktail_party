@@ -145,7 +145,9 @@ class _CocktailsPageState extends State<CocktailsPage> {
                                             child: GestureDetector(
                                               onTap: ()=>Navigator.push(context,
                                                   MaterialPageRoute(builder: (context)=> CocktailDetails(cocktailDetails: data[index]))),
-                                                child: Image.network(data[index].strDrinkThumb.toString())))
+                                                child: Hero(
+                                                    tag: "cocktail-#${data[index].strDrinkThumb}",
+                                                    child: Image.network(data[index].strDrinkThumb.toString()))))
                                     ),
                                   )
                               );

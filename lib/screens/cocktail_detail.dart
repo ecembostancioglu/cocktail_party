@@ -14,7 +14,9 @@ class CocktailDetails extends StatelessWidget {
       extendBodyBehindAppBar:true,
       appBar:AppBar(
         leading: IconButton(
-          onPressed: (){},
+          onPressed: (){
+            Navigator.pop(context);
+          },
           icon: Icon(Icons.chevron_left,size: 30,),
         ),
         backgroundColor: ColorConstants.transparent,
@@ -22,9 +24,9 @@ class CocktailDetails extends StatelessWidget {
       ) ,
       body: Column(
         children: [
-          SizedBox(
-            height: 0.627.sh,
-              child: Image.network(cocktailDetails.strDrinkThumb.toString(),))
+          Hero(
+              tag: "cocktail-#${cocktailDetails.strDrinkThumb}",
+              child: Image.network(cocktailDetails.strDrinkThumb.toString()))
         ],
       ),
 

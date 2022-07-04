@@ -1,8 +1,9 @@
 import 'package:cocktail_party/constants/text_constants.dart';
 import 'package:cocktail_party/screens/collections.dart';
 import 'package:cocktail_party/screens/cocktails/cocktails.dart';
-import 'package:cocktail_party/screens/the_best_cocktails.dart';
 import 'package:flutter/material.dart';
+
+import 'favorites/favorites_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,18 +16,21 @@ class HomePage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Theme.of(context).primaryColor,
-            bottom:const TabBar(
+            bottom: TabBar(
               isScrollable:false,
               indicatorColor: Colors.white,
               tabs: [
                 Tab(
-                 child:Text(TextConstants.cocktails),
+                 child:Text(TextConstants.cocktails,
+                   style: Theme.of(context).textTheme.headline5),
               ),
                 Tab(
-                  child:Text(TextConstants.collections),
+                  child:Text(TextConstants.collections,
+                      style: Theme.of(context).textTheme.headline5),
                 ),
                 Tab(
-                  child:Text(TextConstants.theBestCocktails),
+                  child:Text(TextConstants.favorites,
+                      style: Theme.of(context).textTheme.headline5),
                 ),
               ],
             ),
@@ -35,7 +39,7 @@ class HomePage extends StatelessWidget {
             children: [
               CocktailsPage(),
               CollectionsPage(),
-              TheBestCocktailsPage(),
+              FavoritesPage(),
             ],
           ),
         ),

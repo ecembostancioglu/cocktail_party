@@ -88,7 +88,7 @@ class CocktailDetails extends StatelessWidget {
                   child: Text(cocktailDetails.strInstructions.toString()),
                 ),
                Row(
-                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: [
                    Padding(padding: const EdgeInsets.all(20.0),
                      child: Text(cocktailDetails.strIngredient1.toString()),),
@@ -97,7 +97,7 @@ class CocktailDetails extends StatelessWidget {
                  ],
                ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(padding: const EdgeInsets.all(20.0),
                       child: Text(cocktailDetails.strIngredient2.toString()),),
@@ -106,7 +106,7 @@ class CocktailDetails extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(padding: const EdgeInsets.all(20.0),
                       child: Text(cocktailDetails.strIngredient3.toString()),),
@@ -115,7 +115,7 @@ class CocktailDetails extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(padding: const EdgeInsets.all(20.0),
                       child: Text(cocktailDetails.strIngredient4.toString()),),
@@ -124,7 +124,7 @@ class CocktailDetails extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(padding: const EdgeInsets.all(20.0),
                       child: Text(cocktailDetails.strIngredient5.toString()),),
@@ -133,7 +133,7 @@ class CocktailDetails extends StatelessWidget {
                   ],
                 ),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(padding: const EdgeInsets.all(20.0),
                       child: Text(cocktailDetails.strIngredient6.toString()),),
@@ -141,15 +141,6 @@ class CocktailDetails extends StatelessWidget {
                       child: Text(cocktailDetails.strMeasure6.toString()),),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Padding(padding: const EdgeInsets.all(20.0),
-                      child: Text(cocktailDetails.strIngredient7.toString()),),
-                    Padding(padding: const EdgeInsets.all(20.0),
-                      child: Text(cocktailDetails.strMeasure7.toString()),),
-                  ],
-                )
               ],
             )
           ],

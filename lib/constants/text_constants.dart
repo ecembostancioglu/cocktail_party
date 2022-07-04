@@ -6,6 +6,6 @@ class TextConstants{
   static const collections='Collections';
   static const nonAlcoholic='Non-Alcoholic';
   static const ordinaryDrinks='Ordinary Drinks';
-  static const theBestCocktails='The Best Cocktails';
+  static const favorites='Favorites';
   static const seeAll='See all';
 }

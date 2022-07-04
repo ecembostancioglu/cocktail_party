@@ -138,7 +138,7 @@ class _CocktailsPageState extends State<CocktailsPage> {
                               return isLoading ? getShimmerLoadingforCocktails()
                                   : GridTile(
                                   child: Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 10.w,horizontal: 10.h),
+                                    padding: EdgeInsets.symmetric(vertical: 5.w,horizontal: 5.h),
                                     child: CocktailCard(
                                       cocktail: data[index],
                                     ),

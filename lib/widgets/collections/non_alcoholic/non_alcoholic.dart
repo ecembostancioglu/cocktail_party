@@ -37,7 +37,8 @@ class _NonAlcoholicState extends State<NonAlcoholic> {
           builder: (context,snapshot){
             if(snapshot.data!=null){
               return NonAlcoholicList(snapshot: snapshot);
-            } return getShimmerLoadingforCollections();
+            }else
+            return getShimmerLoadingforCollections();
           },
         ),
       ],

@@ -87,7 +87,7 @@ class CocktailDetails extends StatelessWidget {
                   padding: const EdgeInsets.all(20.0),
                   child: Text(cocktailDetails.strInstructions.toString()),
                 ),
-               Row(
+                Row(
                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                  children: [
                    Padding(padding: const EdgeInsets.all(20.0),

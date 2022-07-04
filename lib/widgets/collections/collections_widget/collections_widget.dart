@@ -15,7 +15,7 @@ class CollectionsWidget extends StatelessWidget {
         Container(
             padding: EdgeInsets.only(left: 20.w,top: 10.h),
             child: Text(alcohol_type,
-                style: Theme.of(context).textTheme.headlineSmall)
+                style: Theme.of(context).textTheme.headline6)
         ),
         Padding(
           padding: EdgeInsets.only(top: 16.h),

@@ -1,16 +1,21 @@
 import 'dart:ui';
 import 'package:cocktail_party/constants/color_constants.dart';
 import 'package:cocktail_party/models/cocktail.dart';
+import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../screens/cocktails/cocktail_detail.dart';
 
-class CocktailCard extends StatelessWidget {
+class CocktailCard extends StatefulWidget {
   const CocktailCard({Key? key,required this.cocktail}) : super(key: key);
   final Cocktail cocktail;
 
+  @override
+  State<CocktailCard> createState() => _CocktailCardState();
+}
 
+class _CocktailCardState extends State<CocktailCard> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -20,12 +25,13 @@ class CocktailCard extends StatelessWidget {
             child: GestureDetector(
                 onTap: ()=>Navigator.push(context,
                     MaterialPageRoute(builder: (context)
-                    => CocktailDetails(cocktailDetails: cocktail))),
+                    => CocktailDetails(cocktailDetails: widget.cocktail))),
                 child: Stack(
                 children: [
-                  Image.network(cocktail.strDrinkThumb.toString()),
+                  Image.network(widget.cocktail.strDrinkThumb.toString()),
                   Positioned(
-                      left: 15,
+                      left: 20,
+                      right: 20,
                       bottom: 5,
                       child: ClipRRect(
                         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -42,7 +48,7 @@ class CocktailCard extends StatelessWidget {
                             ),
                             child: Align(
                               alignment: Alignment.center,
-                              child: Text(cocktail.strDrink.toString(),
+                              child: Text(widget.cocktail.strDrink.toString(),
                                   textAlign: TextAlign.center,
                                   maxLines: 1,
                                   style:Theme.of(context).textTheme.headline5),

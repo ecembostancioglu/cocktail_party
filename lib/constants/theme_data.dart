@@ -12,7 +12,8 @@ class BuildThemeData{
         headline5: TextStyle(fontSize: 14.sp, color: ColorConstants.primaryColor),
         headline4: TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600,color: ColorConstants.black),
         headline6: TextStyle(fontSize: 18.sp),
-        bodyText2: TextStyle(fontSize: 14.sp)
+        bodyText2: TextStyle(fontSize: 14.sp),
+
     ),
   );
 

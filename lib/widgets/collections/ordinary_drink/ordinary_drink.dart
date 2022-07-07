@@ -25,8 +25,6 @@ class _OrdinaryDrinkState extends State<OrdinaryDrink> {
     super.initState();
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     return Column(

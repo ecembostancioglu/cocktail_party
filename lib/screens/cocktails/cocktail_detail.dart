@@ -10,17 +10,6 @@ class CocktailDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-
-    int a=1;
-    if(a>=1 || a<7){
-      a++;
-      print('cocktailDetails.strIngredient${a}.toString()');
-    }
-
-
-
-
     return Scaffold(
       extendBodyBehindAppBar:true,
       appBar:AppBar(

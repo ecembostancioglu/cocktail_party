@@ -1,8 +1,7 @@
-import 'package:cocktail_party/network/dio_nonalcoholic.dart';
 import 'package:cocktail_party/widgets/collections/ordinary_drink/ordinary_drink.dart';
 import 'package:flutter/material.dart';
-import '../widgets/collections/alcoholic/alcoholic.dart';
-import '../widgets/collections/non_alcoholic/non_alcoholic.dart';
+import '../../widgets/collections/alcoholic/alcoholic.dart';
+import '../../widgets/collections/non_alcoholic/non_alcoholic.dart';
 
 
 class CollectionsPage extends StatefulWidget {
@@ -20,14 +19,13 @@ class _CollectionsPageState extends State<CollectionsPage> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: [
+          children: const [
             Alcoholic(),
             NonAlcoholic(),
             OrdinaryDrink(),
           ],
         ),
       ),
-
     );
   }
 }

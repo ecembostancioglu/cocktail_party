@@ -1,7 +1,6 @@
 import 'dart:ui';
 import 'package:cocktail_party/constants/color_constants.dart';
 import 'package:cocktail_party/models/cocktail.dart';
-import 'package:favorite_button/favorite_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'non_alcoholic_card.dart';
 
 class NonAlcoholicList extends StatelessWidget {

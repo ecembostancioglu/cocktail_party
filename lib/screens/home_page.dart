@@ -1,5 +1,5 @@
 import 'package:cocktail_party/constants/text_constants.dart';
-import 'package:cocktail_party/screens/collections.dart';
+import 'package:cocktail_party/screens/collections/collections.dart';
 import 'package:cocktail_party/screens/cocktails/cocktails.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +30,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          body: TabBarView(
+          body:const TabBarView(
             children: [
               CocktailsPage(),
               CollectionsPage(),

@@ -29,6 +29,4 @@ class DioCocktails extends DioClient{
     }
     return cocktails;
   }
-
- // Future<Iterable<Cocktail>> get
 }

@@ -1,7 +1,6 @@
 import 'package:cocktail_party/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import '../../models/cocktail.dart';
 
 class CocktailDetails extends StatelessWidget {
@@ -135,7 +134,6 @@ class CocktailDetails extends StatelessWidget {
           ],
         ),
       ),
-
     );
   }
 }

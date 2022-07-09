@@ -31,14 +31,15 @@ class _OrdinaryDrinkState extends State<OrdinaryDrink> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CollectionsWidget(alcohol_type: TextConstants.ordinaryDrinks),
+        CollectionsWidget(alcohol_type: TextConstants.ordinaryDrinks),
         FutureBuilder<Iterable<Cocktail>>(
           future: _cocktails,
           builder: (context,snapshot){
             if(snapshot.data!=null){
               return OrdinaryDrinkList(snapshot: snapshot);
-            }else
-            return getShimmerLoadingforCollections();
+            }else {
+              return getShimmerLoadingforCollections();
+            }
           },
         ),
       ],

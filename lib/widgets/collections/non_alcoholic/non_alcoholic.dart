@@ -31,7 +31,7 @@ class _NonAlcoholicState extends State<NonAlcoholic> {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const CollectionsWidget(alcohol_type: TextConstants.nonAlcoholic),
+        CollectionsWidget(alcohol_type: TextConstants.nonAlcoholic),
         FutureBuilder<Iterable<Cocktail>>(
           future: _cocktails,
           builder: (context,snapshot){

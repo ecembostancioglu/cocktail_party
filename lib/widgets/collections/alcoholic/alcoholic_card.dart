@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cocktail_party/constants/color_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,11 @@ class AlcoholicCard extends StatelessWidget {
       children:[
         ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
-            child:Image.network(alcoholicCocktail.strDrinkThumb.toString(),)),
+            child:CachedNetworkImage(
+              imageUrl:alcoholicCocktail.strDrinkThumb,
+              placeholder: (context, url) => const CircularProgressIndicator(),
+              errorWidget: (context,url,error) => const Center(child: Icon(Icons.error)),
+            )),
         Positioned(
             left: 20,
             right: 20,

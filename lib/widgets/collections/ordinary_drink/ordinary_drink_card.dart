@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cocktail_party/constants/color_constants.dart';
+import 'package:cocktail_party/widgets/shimmer/shimmer_for_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,7 +19,7 @@ class OrdinaryDrinkCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(20.0),
             child:CachedNetworkImage(
               imageUrl:ordinaryDrink.strDrinkThumb,
-              placeholder: (context, url) => const CircularProgressIndicator(),
+              placeholder: (context, url) => getShimmerLoadingforCollections(),
               errorWidget: (context,url,error) =>const Center(child: Icon(Icons.error)),
             )),
         Positioned(

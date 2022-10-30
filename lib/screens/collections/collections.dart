@@ -17,9 +17,9 @@ class _CollectionsPageState extends State<CollectionsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      body:SingleChildScrollView(
         child: Column(
-          children: const [
+          children: [
             Alcoholic(),
             NonAlcoholic(),
             OrdinaryDrink(),

@@ -1,16 +1,20 @@
-# cocktail_party
+# Cocktail Party
+Search cocktail by name,filter by category
 
-A new Flutter project.
+# API Endpoints Used
+https://www.thecocktaildb.com/
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+##  Libraries which I used in the application:
+- flutter_screenutil : https://pub.dev/packages/flutter_screenutil
+- dio : https://pub.dev/packages/dio
+- flutter_staggered_grid_view: https://pub.dev/packages/flutter_staggered_grid_view
+- google_fonts: https://pub.dev/packages/google_fonts
+- shimmer: https://pub.dev/packages/shimmer
+- blur: https://pub.dev/packages/blur
+- cached_network_image: https://pub.dev/packages/cached_network_image
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+#  Screenshots
+![home_page]
+![detail_page]

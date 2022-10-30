@@ -1,6 +1,8 @@
 import 'dart:ui';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cocktail_party/constants/color_constants.dart';
 import 'package:cocktail_party/models/cocktail.dart';
+import 'package:cocktail_party/widgets/shimmer/shimmer_for_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -27,7 +29,11 @@ class _CocktailCardState extends State<CocktailCard> {
                     => CocktailDetails(cocktailDetails: widget.cocktail))),
                 child: Stack(
                 children: [
-                  Image.network(widget.cocktail.strDrinkThumb.toString()),
+                  CachedNetworkImage(
+                    imageUrl:widget.cocktail.strDrinkThumb.toString(),
+                    placeholder: (context, url) => getShimmerLoadingforCollections(),
+                    errorWidget: (context,url,error) => const Center(child: Icon(Icons.error)),
+                  ),
                   Positioned(
                       left: 20,
                       right: 20,

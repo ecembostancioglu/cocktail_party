@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cocktail_party/constants/color_constants.dart';
+import 'package:cocktail_party/widgets/shimmer/shimmer_for_collections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,7 +16,7 @@ class NonAlcoholicCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(20.0),
           child:CachedNetworkImage(
             imageUrl:nonAlcoholicCocktail.strDrinkThumb,
-            placeholder: (context, url) => const CircularProgressIndicator(),
+            placeholder: (context, url) => getShimmerLoadingforCollections(),
             errorWidget: (context,url,error) =>const Center(child: Icon(Icons.error)),
           )),
         Positioned(
@@ -23,7 +24,7 @@ class NonAlcoholicCard extends StatelessWidget {
             right: 20,
             bottom: 5,
             child: ClipRRect(
-              borderRadius: BorderRadius.all(Radius.circular(20)),
+              borderRadius:const BorderRadius.all(Radius.circular(20)),
               child: BackdropFilter(
                 filter:ImageFilter.blur(
                   sigmaX: 5.0,
